@@ -3,4 +3,15 @@ Todo:
 
 --add ui/theme (twitter bootstramp)
 
+--add the datasets table
+
+--create /Add page for adding dataset records
+
+--creatre /View page for viewing all the dataset values
+
 --check for incorrect format name for e.g. url ending with .jsox
+
+
+Questions:
+-------------
+what are laravel models ?
