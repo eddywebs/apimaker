@@ -13,9 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	return View::make('homepage');
 });
 
 
-Route::controller('debug', 'debugController'); //implict route
+Route::controller('debug', 'debugController'); //implicit route
 
