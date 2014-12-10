@@ -1,17 +1,24 @@
 Todo:
 --------
 
---add the datasets table
+-- add laravel debug bar
 
 --create /Add page for adding dataset records
 
---creatre /View page for viewing all the dataset values
+--create /View page for viewing all the dataset values
+
+--incorporate api methods/class 
 
 --check for incorrect format name for e.g. url ending with .jsox
 
+--add users table and authentication mechanism
+
+--allow guest or private flag for datasets
 
 Questions:
 -------------
+
+--seeder not working?
 
 --how to switch between environments like local etc that consums the /config/database file accordingly ?
 

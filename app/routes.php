@@ -19,3 +19,19 @@ Route::get('/', function()
 
 Route::controller('debug', 'debugController'); //implicit route
 
+
+Route::get('addDataset', function()
+{
+	$dataset= new dataset();
+
+	$dataset->dbname='personaldb';
+	$dataset->username='root';
+	$dataset->password='dbpass';
+	$dataset->hostname='localhost';
+	$dataset->port=3306;
+	$dataset->dbtype='mysql';
+
+	$dataset->save();
+
+	return 'done adding a dataset';
+});
