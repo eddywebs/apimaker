@@ -20,6 +20,8 @@ Questions:
 
 --seeder not working?
 
+--reason why need to add "_token" column in dataset table ?
+
 --how to switch between environments like local etc that consums the /config/database file accordingly ?
 
 There may be several database.php files on your /app/config folder. Starting out, there should be one at /app/config/database.php and one at /app/config/local/database.php. Because we're working in the local environment right now, make sure you're editing /app/config/local/database.php. (https://github.com/susanBuck/notes/blob/master/05_Laravel/09_Databases_Configuration.md)

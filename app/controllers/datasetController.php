@@ -9,15 +9,21 @@ class datasetController extends \BaseController {
 	 */
 
 
-	// public function __construct() {
- //        # Make sure BaseController construct gets called
- //        parent::__construct();
- //    }
-    protected $fillable = array('dbname', 'username', 'password', 'hostname', 'port', 'dbtype');
+	public function __construct() {
+        # Make sure BaseController construct gets called
+        parent::__construct();
+    }
+   // protected $fillable = array('dbname', 'username', 'password', 'hostname', 'port', 'dbtype');
+
+    // public function search()
+    // {
+    // 	return "get me!";
+    // }
 	public function index()
 	{
-		//
-		//return "hello!";
+		////flash message not working below?
+		return Redirect::action('datasetController@create')->with('flash_message','Api could not be created bad data. !');
+
 	}
 
 
@@ -46,7 +52,7 @@ class datasetController extends \BaseController {
 		$dataset->fill(Input::all());
 		$dataset->save();
 
-		return Redirect::action('HomeController@showWelcome')->with('flash_message','Api created sucessfully !');
+		return Redirect::action('HomeController@getIndex')->with('flash_message','Api created sucessfully !');
 	}
 
 
@@ -59,6 +65,14 @@ class datasetController extends \BaseController {
 	public function show($id)
 	{
 		//
+		$query= Input::get('query');
+
+		if($query==null) $query='';
+
+		return View::make('search')->with('query', $query);
+		//Redirect::action('datasetController@create')->with('flash_message', "Fetching APIs..");
+
+
 	}
 
 

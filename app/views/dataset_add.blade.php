@@ -10,8 +10,12 @@
 		<h2>Make an Api !</h2>
 		<p>Create an api from a database connection.</p>
 		<br>
-		<!--form goes here!-->
+
 		{{ Form::open(array('url' => 'dataset')) }}
+				<!-- action: add validation on description field-->
+		{{ Form::label('description','Api Description (required)') }}
+		{{ Form::text('description'); }}
+		<br>
 
 		{{ Form::label('dbname','Database Name') }}
 		{{ Form::text('dbname'); }}
