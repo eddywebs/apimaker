@@ -26,6 +26,8 @@ class DatasetsTable extends Migration {
 			$table->string('hostname');
 			$table->integer('port');
 			$table->string('dbtype');
+			$table->string('description');
+			$table->string('_token')->nullable();
 		});
 
 		Schema::create('table_blacklists', function($table){
@@ -33,7 +35,7 @@ class DatasetsTable extends Migration {
 			$table->increments('id');
 			$table->string('value');
 			$table->integer('dataset_id')->unsigned();
-
+			$table->string('_token')->nullable();
 			$table->foreign('dataset_id')->references('id')->on('datasets');			
 
 		});
@@ -43,9 +45,8 @@ class DatasetsTable extends Migration {
 			$table->increments('id');
 			$table->string('value');
 			$table->integer('dataset_id')->unsigned();
-
+			$table->string('_token')->nullable();
 			$table->foreign('dataset_id')->references('id')->on('datasets');			
-
 		});
 
 	}

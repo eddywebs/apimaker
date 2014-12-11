@@ -22,8 +22,13 @@ class datasetController extends \BaseController {
 	public function index()
 	{
 		////flash message not working below?
-		return Redirect::action('datasetController@create')->with('flash_message','Api could not be created bad data. !');
+		//return Redirect::action('datasetController@create')->with('flash_message','Api could not be created bad data. !');
 
+		$query= Input::get('query');
+		$datasets = dataset::search($query);
+
+		return View::make('search')->with('query', $query)->with('datasets', $datasets);
+		//Redirect::action('datasetController@create')->with('flash_message', "Fetching APIs..");
 	}
 
 
@@ -55,7 +60,6 @@ class datasetController extends \BaseController {
 		return Redirect::action('HomeController@getIndex')->with('flash_message','Api created sucessfully !');
 	}
 
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -65,16 +69,9 @@ class datasetController extends \BaseController {
 	public function show($id)
 	{
 		//
-		$query= Input::get('query');
-
-		if($query==null) $query='';
-
-		return View::make('search')->with('query', $query);
-		//Redirect::action('datasetController@create')->with('flash_message', "Fetching APIs..");
-
+		
 
 	}
-
 
 	/**
 	 * Show the form for editing the specified resource.
@@ -85,6 +82,15 @@ class datasetController extends \BaseController {
 	public function edit($id)
 	{
 		//
+		try
+		{
+			$dataset = dataset::findOrFail($id);
+		}
+		catch(exeption $e){
+			return Redirect::to('/dataset')->with('flash_message', 'Dataset for API not found.');
+		}
+
+		return View::make('dataset_edit')->with('dataset', $dataset);
 	}
 
 

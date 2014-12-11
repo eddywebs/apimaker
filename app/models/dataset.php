@@ -6,13 +6,14 @@ class dataset extends Eloquent{
 	{
 		if($query){
 
-			$books = DB::table('datasets')->where('description', 'LIKE', '%query%')->get();
+			$datasets = DB::table('datasets')->where('description', 'LIKE', '%query%')->get();
 			//Book::with('description', 'LIKE', "%%query%");
 		}
 		else
 		{
-			$books =DB::all();
+			$datasets =dataset::all();
 		}
-	}
-	
+
+		return $datasets;
+	}	
 }

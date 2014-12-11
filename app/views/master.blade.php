@@ -41,8 +41,8 @@
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="{{Request::path() == '/' ? 'active' : '';}}"><a href="./">Home</a></li>
-            <li class="{{Request::path() == 'makeApi' ? 'active' : '';}}"><a href="./makeApi">Make API</a></li>
-            <li class="{{Request::path() == 'accessApi' ? 'active' : '';}}"><a href="./accessApi">Access an API</a></li>
+            <li class="{{Request::path() == 'dataset/create' ? 'active' : '';}}"><a href="./dataset/create">Make API</a></li>
+            <li class="{{Request::path() == 'dataset/' ? 'active' : '';}}"><a href="./dataset">Access an API</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -1,11 +1,9 @@
 Todo:
 --------
 
+--add search input in api list page
+
 -- add laravel debug bar
-
---create /Add page for adding dataset records
-
---create /View page for viewing all the dataset values
 
 --incorporate api methods/class 
 
@@ -18,11 +16,16 @@ Todo:
 Questions:
 -------------
 
+-- Route [HomeController@getIndex] not defined. after adding  a dataset, but its 	defined ?
 --seeder not working?
+
+--flash_messages not working ?
+
+--http://localhost:8080/apimaker/public/dataset/ redirects ?
 
 --reason why need to add "_token" column in dataset table ?
 
---how to switch between environments like local etc that consums the /config/database file accordingly ?
+--how to switch between environments like local etc that consumes the /config/database file accordingly ?
 
 There may be several database.php files on your /app/config folder. Starting out, there should be one at /app/config/database.php and one at /app/config/local/database.php. Because we're working in the local environment right now, make sure you're editing /app/config/local/database.php. (https://github.com/susanBuck/notes/blob/master/05_Laravel/09_Databases_Configuration.md)
 

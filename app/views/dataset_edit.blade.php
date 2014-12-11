@@ -1,41 +1,39 @@
 @extends('master')
 
 @section('title')
-	Create an Api
+	Edit an Api
 @stop
 
 @section('content')
 <div class="starter-template">
 		<div class="jumbotron" style="text-align: left;">
-		<h2>Make an Api !</h2>
-		<p>Create an api from a database connection.</p>
+		<h2>Edit {{ $dataset['description'] }}</h2>
 		<br>
-
 		{{ Form::open(array('url' => 'dataset')) }}
 				<!-- action: add validation on description field-->
 		{{ Form::label('description','Api Description (required)') }}
-		{{ Form::text('description'); }}
+		{{ Form::text('description', $dataset['description']); }}
 		<br>
 
 		{{ Form::label('dbname','Database Name') }}
-		{{ Form::text('dbname'); }}
+		{{ Form::text('dbname', $dataset['dbname']); }}
 		<br>
 		{{ Form::label('username','Database server username') }}
-		{{ Form::text('username'); }}
+		{{ Form::text('username', $dataset['username']); }}
 		<br>
 		{{ Form::label('password','Database server password') }}
-		{{ Form::text('password'); }}
+		{{ Form::text('password', $dataset['password']); }}
 		<br>
 		{{ Form::label('hostname','Hostname') }}
-		{{ Form::text('hostname'); }}
+		{{ Form::text('hostname', $dataset['hostname']); }}
 		<br>
 		{{ Form::label('port','Port Number (3306 for mysql)') }}
-		{{ Form::number('port'); }}
+		{{ Form::number('port', $dataset['port']); }}
 		<br>
 		{{ Form::label('dbtype','Database type') }} <!-- change it to picklist ? !-->
-		{{ Form::text('dbtype'); }}
+		{{ Form::text('dbtype', $dataset['dbtype']); }}
 		<br>
-		{{ Form::submit('Add'); }}
+		{{ Form::submit('Update'); }}
 
 	{{ Form::close() }}
 
