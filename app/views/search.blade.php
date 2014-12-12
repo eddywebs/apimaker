@@ -18,7 +18,7 @@
 			<hr>
 			@foreach($datasets as $dataset)
 				<section>
-					<h3> - {{ $dataset['description'] }} <a href='/dataset/edit/{{ $dataset['id'] }}'>Edit</a><h3>
+					<h3> - {{ $dataset['description'] }} <a href='/dataset/{{ $dataset['id'] }}/edit'>Edit</a><h3>
 				</section>
 			@endforeach	
 				

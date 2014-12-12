@@ -27,6 +27,11 @@
   </head>
 
   <body>
+
+  
+@if (Session::get('flash_message'))
+    <div class="alert alert-info">{{ Session::get('flash_message') }}</div>
+@endif
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">

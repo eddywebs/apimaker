@@ -28,7 +28,8 @@ class datasetController extends \BaseController {
 		$datasets = dataset::search($query);
 
 		return View::make('search')->with('query', $query)->with('datasets', $datasets);
-		//Redirect::action('datasetController@create')->with('flash_message', "Fetching APIs..");
+		// return Redirect::action('datasetController@create')->with('flash_message', "Fetching APIs..");
+	
 	}
 
 
@@ -56,8 +57,8 @@ class datasetController extends \BaseController {
 		$dataset = new dataset();
 		$dataset->fill(Input::all());
 		$dataset->save();
-
-		return Redirect::action('HomeController@getIndex')->with('flash_message','Api created sucessfully !');
+			//View::make('homepage')
+		return Redirect::action('datasetController@index')->with('flash_message','Api created sucessfully !');
 	}
 
 	/**
@@ -69,6 +70,16 @@ class datasetController extends \BaseController {
 	public function show($id)
 	{
 		//
+		try
+		{
+			$dataset = dataset::findOrFail($id);
+		}
+		catch(exeption $e){
+			return Redirect::to('/dataset')->with('flash_message', 'API not found.');
+		}
+
+		return View::make('dataset_show')->with('dataset', $dataset);
+
 		
 
 	}
@@ -103,6 +114,7 @@ class datasetController extends \BaseController {
 	public function update($id)
 	{
 		//
+
 	}
 
 
