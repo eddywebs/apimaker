@@ -21,6 +21,8 @@ Route::controller('debug', 'debugController'); //implicit route
 
 Route::resource('dataset', 'datasetController'); //switching to implicit controller
 
+Route::controller('api/v1', 'apiController');
+
 Route::get('addDataset', function()
 {
 	$dataset= new dataset();

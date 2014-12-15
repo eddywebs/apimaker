@@ -1,6 +1,6 @@
 <?php
 
-class datasetController extends \BaseController {
+class datasetController extends BaseController {
 
 	/**
 	 * Display a listing of the resource.
