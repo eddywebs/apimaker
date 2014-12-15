@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function blah(){
+	public function index(){
 
 		return View::make('homepage');
 	}

@@ -9,7 +9,10 @@
 		<div class="jumbotron" style="text-align: left;">
 		<h2>Edit {{ $dataset['description'] }}</h2>
 		<br>
-		{{ Form::open(array('url' => 'update')) }}
+		{{ Form::open(array('url' => 'dataset/edit', 'method' => 'put')) }}
+<!-- 
+		add 'id' in hidden field since this how update controller will catch the record to be updates -->
+		{{ Form::hidden('id', $dataset['id']); }}
 				<!-- action: add validation on description field-->
 		{{ Form::label('description','Api Description (required)') }}
 		{{ Form::text('description', $dataset['description']); }}

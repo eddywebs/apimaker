@@ -41,13 +41,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="./">Instant API Maker</a>
+          <a class="navbar-brand" href="/">Instant API Maker</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="{{Request::path() == '/' ? 'active' : '';}}"><a href="./">Home</a></li>
-            <li class="{{Request::path() == 'dataset/create' ? 'active' : '';}}"><a href="./dataset/create">Make API</a></li>
-            <li class="{{Request::path() == 'dataset/' ? 'active' : '';}}"><a href="./dataset">Access an API</a></li>
+            <li class="{{Request::path() == '/' ? 'active' : '';}}"><a href="/">Home</a></li>
+            <li class="{{Request::path() == 'dataset/create' ? 'active' : '';}}"><a href="{{ action('datasetController@index') }}/create">Make API</a></li>
+            <li class="{{Request::path() == 'dataset/' ? 'active' : '';}}"><a href="{{ action('datasetController@index') }}">Access an API</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -60,7 +60,7 @@
 <div class="footer">
       <div class="container">
         <p>Created by eddywebs 
-            <a href="https://github.com/eddywebs/RandomUserContentGenerator">Source code available at Github.</a>
+            <a href="https://github.com/eddywebs/RandomUserContentGenerator">Source code available on Github.</a>
           </p>
       </div>
 </div>

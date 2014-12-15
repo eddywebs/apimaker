@@ -19,8 +19,7 @@ Route::get('/', function()
 
 Route::controller('debug', 'debugController'); //implicit route
 
-Route::resource('dataset', 'datasetController'); //explicit define all REST controller made by artisan controller:make datasetController
-
+Route::resource('dataset', 'datasetController'); //switching to implicit controller
 
 Route::get('addDataset', function()
 {
