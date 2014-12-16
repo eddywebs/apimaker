@@ -37,8 +37,14 @@
 		{{ Form::text('dbtype', $dataset['dbtype']); }}
 		<br>
 		{{ Form::submit('Update'); }}
-
 	{{ Form::close() }}
+
+		<div>
+		{{---- DELETE -----}}
+		{{ Form::open(['method' => 'DELETE', 'action' => ['datasetController@destroy', $dataset->id]]) }}
+		    {{ Form::submit('Delete'); }}
+		{{ Form::close() }}
+	</div>
 
 	</div>
 </div>

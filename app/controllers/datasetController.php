@@ -144,6 +144,17 @@ class datasetController extends BaseController {
 	public function destroy($id)
 	{
 		//
+		try
+		{
+			dataset::destroy($id); //(Input::get('id'));
+		}
+		catch(Exception $e){
+			return Redirect::to('/dataset')->with('flash_message', "Something bad happened while trying to delete API dataset, cannot destoy. ");
+		}
+
+		return Redirect::action('datasetController@index')->with('flash_message', 'API destroyed successfully.');
+
+
 	}
 
 
