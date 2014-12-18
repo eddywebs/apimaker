@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'apimaker',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'dbpass',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

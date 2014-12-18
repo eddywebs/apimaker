@@ -98,12 +98,14 @@ class datasetController extends BaseController {
 		try
 		{
 			$dataset = dataset::findOrFail($id);
+			$tables = $dataset->table_blacklist()->get();
 		}
 		catch(exeption $e){
 			return Redirect::to('/dataset')->with('flash_message', 'Dataset for API not found.');
 		}
 
-		return View::make('dataset_edit')->with('dataset', $dataset);
+		return View::make('dataset_edit')->with('dataset', $dataset)
+										 ->with('tables', $tables);
 	}
 
 
@@ -126,9 +128,21 @@ class datasetController extends BaseController {
 
 		try{
 			Eloquent::unguard(); //unable to save without unguard ?
-			$dataset->fill(Input::except('_method'));
+			$dataset->fill(Input::except('_method', 'table_blacklist'));
 			$dataset->save();
-			return Redirect::action('datasetController@index')->with('flash_message', 'API updated sucessfully ! ');
+			//now update all the blacklisted table rows
+			// if(!isset($_POST['table_blacklist'])) $_POST['table_blacklist'] = array();
+			// $tables[] = $_POST['table_blacklist'];
+
+			// foreach($tables as $id){
+			// 	$table_blacklist = table_blacklist::find($id);
+			// 	$table_blacklist->blacklisted =true;
+			// 	//$table_blacklist->dataset()->associate($dataset);
+			// 	//$table->save();
+			// 	//$table_blacklist->save();
+			// 	//s$this->table_blacklist()->save(table_blacklist::find($id));
+			// }
+			Redirect::action('datasetController@index')->with('flash_message', 'API updated sucessfully ! ');
 		}
 		catch(Exception $e){
 			return Redirect::action('datasetController@index')->with('flash_message', 'Something bad happened :(, error updating API. ');
@@ -158,6 +172,8 @@ class datasetController extends BaseController {
 
 
 	}
+
+	
 
 
 }

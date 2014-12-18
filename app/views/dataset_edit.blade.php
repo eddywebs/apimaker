@@ -36,8 +36,14 @@
 		{{ Form::label('dbtype','Database type') }} <!-- change it to picklist ? !-->
 		{{ Form::text('dbtype', $dataset['dbtype']); }}
 		<br>
-		{{ Form::label('column_blacklist','Column Blacklist') }} <!-- change it to picklist ? !-->
-		{{ Form::text('column_blacklist', $dataset['dbtype']); }}
+
+		{{ Form::label('table_blacklist','Blacklisted Tables:') }}
+		@foreach($tables as $id => $table)
+				{{ $table["value"] }}
+				{{ Form::checkbox('table_blacklist[]', $table["id"], $table["blacklisted"] ) }}
+				&nbsp;&nbsp;&nbsp;
+			@endforeach
+
 		<br>
 		{{ Form::submit('Update'); }}
 	{{ Form::close() }}

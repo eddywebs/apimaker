@@ -23,18 +23,24 @@ Route::resource('dataset', 'datasetController'); //switching to implicit control
 
 Route::get('api/v1/{id}/{query}', 'apiController@getApi');
 
+
+
+Route::Get('tables/{id}', function($id){
+
+	//try{
+				$dataset =dataset::findOrFail($id);
+				$tables = $dataset->table_blacklist()->get();
+
+				return $dataset;//array_column($tables, 'values');//var_dump($dataset->tables);
+
+});
+
+
+
 Route::Get('getTable/{id}', function($id){
 
 	$dataset = dataset::findOrFail($id);
 
-
-// function &connect( $db ) {
-		
-		// check for existing connection
-		// if ( isset( $this->connections[$db] ) ) {
-		// 	return $this->connections[$db];
-		// }
-			
 	
 		try {
 			if ($dataset['dbtype'] == 'mysql') {
@@ -75,8 +81,16 @@ Route::Get('getTable/{id}', function($id){
 
 		// add cache?
 		//$this->connections[$db->type] = &$dbh
-		$sth = $dbh->query("show tables;"); //select
+		$sth = $dbh->query("select distinct table_name as results from information_schema.columns where table_schema='".$dataset['dbname']."'"); //select
 		$sth->setFetchMode(PDO::FETCH_ASSOC);
+
+		$records= $sth->fetchAll();
+
+		foreach($records as $row){
+			$results[]=$row['results'];
+		}
+
+		var_dump($results);
 
 		// $results= $sth->fetch();
 
@@ -94,6 +108,7 @@ Route::Get('getTable/{id}', function($id){
 
 
 });
+
 
 Route::get('addDataset', function()
 {

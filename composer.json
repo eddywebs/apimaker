@@ -9,7 +9,8 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"eddywebs/db-to-api": "dev-master"
+		"eddywebs/db-to-api": "dev-master",
+		"barryvdh/laravel-debugbar": "1.8.*@dev"
 	},
 	"autoload": {
 		"classmap": [

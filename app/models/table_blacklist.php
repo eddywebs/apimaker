@@ -3,7 +3,7 @@
 class table_blacklist extends Eloquent {
 
 	public function dataset(){
-		#dataset can have many blacklisted tables
-		return $this->hasMany('dataset');
+		#table blacklist belongs to a dataset
+		return $this->belongsTo('dataset');
 	}
 }
