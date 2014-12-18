@@ -1,11 +1,15 @@
 {
+	"require": {
+        "badcow/lorem-ipsum": "dev-master"
+	},
 	"name": "laravel/laravel",
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"eddywebs/db-to-api": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
