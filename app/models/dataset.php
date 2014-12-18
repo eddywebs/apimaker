@@ -15,5 +15,15 @@ class dataset extends Eloquent{
 		}
 
 		return $datasets;
+	}
+
+	public function table_blacklist(){
+		#table_blacklist belongs to a dataset
+		return $this->belongsTo('table_blacklist');
+	}
+
+	public function column_blacklist(){
+
+		return $this->belongsTo('column_blacklist');
 	}	
 }

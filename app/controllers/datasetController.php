@@ -73,6 +73,8 @@ class datasetController extends BaseController {
 		try
 		{
 			$dataset = dataset::findOrFail($id);
+
+			
 		}
 		catch(exeption $e){
 			return Redirect::to('/dataset')->with('flash_message', 'API not found.');

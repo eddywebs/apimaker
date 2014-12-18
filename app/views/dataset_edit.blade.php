@@ -36,6 +36,9 @@
 		{{ Form::label('dbtype','Database type') }} <!-- change it to picklist ? !-->
 		{{ Form::text('dbtype', $dataset['dbtype']); }}
 		<br>
+		{{ Form::label('column_blacklist','Column Blacklist') }} <!-- change it to picklist ? !-->
+		{{ Form::text('column_blacklist', $dataset['dbtype']); }}
+		<br>
 		{{ Form::submit('Update'); }}
 	{{ Form::close() }}
 
