@@ -37,10 +37,10 @@
 		{{ Form::text('dbtype', $dataset['dbtype']); }}
 		<br>
 
-		{{ Form::label('table_blacklist','Blacklisted Tables:') }}
+		{{ Form::label('table_blacklist','Available Tables:') }}
 		@foreach($tables as $id => $table)
 				{{ $table["value"] }}
-				{{ Form::checkbox('table_blacklist[]', $table["id"], $table["blacklisted"] ) }}
+				<!-- {{ Form::checkbox('table_blacklist[]', $table["id"], $table["blacklisted"] ) }} -->
 				&nbsp;&nbsp;&nbsp;
 			@endforeach
 

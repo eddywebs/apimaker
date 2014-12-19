@@ -23,9 +23,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'apimaker2',
+			'database'  => 'apimaker',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'dbpass',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
