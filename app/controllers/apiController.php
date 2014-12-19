@@ -45,6 +45,8 @@ class apiController extends BaseController{
 		);
 		$param='db=apimaker2&table=datasets&format=json';
 		$var = Eddywebs\DbToApi\DbToApi::getApi($param, $config);
-		//return "here goes api";
+
+
+		return $var;//"here goes api";
 	}
 }

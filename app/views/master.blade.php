@@ -60,7 +60,7 @@
 <div class="footer">
       <div class="container">
         <p>Created by eddywebs 
-            <a href="https://github.com/eddywebs/RandomUserContentGenerator">Source code available on Github.</a>
+            <a href="https://github.com/eddywebs/apimaker">Source code available at Github.</a>
           </p>
       </div>
 </div>

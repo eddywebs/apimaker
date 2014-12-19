@@ -23,7 +23,7 @@ Route::resource('dataset', 'datasetController'); //switching to implicit control
 
 Route::get('api/v1/{id}/{query}', 'apiController@getApi');
 
-
+Route::get('apiTest', 'apiController@getIndex');
 
 Route::Get('tables/{id}', function($id){
 

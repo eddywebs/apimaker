@@ -14,7 +14,7 @@ I also created a composer package for converting any database connection string 
 https://packagist.org/packages/eddywebs/db-to-api
 
 ## Demo
-Demo available online at: http://youtu.be/RzGbDCACBm4
+Demo available online at: http://youtu.be/eNKMprvKWjQ
 
 ## Details for teaching team
 No login required.

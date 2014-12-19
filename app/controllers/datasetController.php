@@ -73,6 +73,7 @@ class datasetController extends BaseController {
 		try
 		{
 			$dataset = dataset::findOrFail($id);
+			$tables = $dataset->table_blacklist()->get();
 
 			
 		}
@@ -80,7 +81,8 @@ class datasetController extends BaseController {
 			return Redirect::to('/dataset')->with('flash_message', 'API not found.');
 		}
 
-		return View::make('dataset_show')->with('dataset', $dataset);
+		return View::make('dataset_show')->with('dataset', $dataset)
+										->with('tables', $tables);
 
 		
 
@@ -131,18 +133,21 @@ class datasetController extends BaseController {
 			$dataset->fill(Input::except('_method', 'table_blacklist'));
 			$dataset->save();
 			//now update all the blacklisted table rows
-			// if(!isset($_POST['table_blacklist'])) $_POST['table_blacklist'] = array();
-			// $tables[] = $_POST['table_blacklist'];
+			if(!isset($_POST['table_blacklist'])) $_POST['table_blacklist'] = array();
+			$tables[] = $_POST['table_blacklist'];
 
-			// foreach($tables as $id){
-			// 	$table_blacklist = table_blacklist::find($id);
-			// 	$table_blacklist->blacklisted =true;
-			// 	//$table_blacklist->dataset()->associate($dataset);
-			// 	//$table->save();
-			// 	//$table_blacklist->save();
-			// 	//s$this->table_blacklist()->save(table_blacklist::find($id));
-			// }
-			Redirect::action('datasetController@index')->with('flash_message', 'API updated sucessfully ! ');
+			foreach($tables as $id){
+
+				//$dataset->updateTable($id);
+				// //$table_blacklist = new table_blacklist();
+				// $table_blacklist = $dataset->table_blacklist()->find($id); //table_blacklist::find($id);
+				// $table_blacklist->blacklisted =true;
+				// //$table_blacklist->dataset()->associate($dataset);
+				// //$table->save();
+				// $this->tablevlak
+				//s$this->table_blacklist()->save(table_blacklist::find($id));
+			}
+			return Redirect::action('datasetController@index')->with('flash_message', 'API updated sucessfully ! ');
 		}
 		catch(Exception $e){
 			return Redirect::action('datasetController@index')->with('flash_message', 'Something bad happened :(, error updating API. ');
@@ -162,6 +167,9 @@ class datasetController extends BaseController {
 		//
 		try
 		{
+			//first delete all child table data
+			 DB::statement('DELETE FROM table_blacklists WHERE dataset_id = ?', array($id));
+
 			dataset::destroy($id); //(Input::get('id'));
 		}
 		catch(Exception $e){

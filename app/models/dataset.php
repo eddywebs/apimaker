@@ -28,11 +28,6 @@ class dataset extends Eloquent{
 		return $this->hasMany('column_blacklist');
 	}
 
-	public function tables() {
-			
-        return $this->belongsTo('table_blacklist');
-    }
-
 	public static function boot() {
 
         parent::boot();
@@ -56,7 +51,19 @@ class dataset extends Eloquent{
             {
             	//forget and forgive :|
             }
+
+        static::deleting(function($dataset) {
+            DB::statement('DELETE FROM table_blacklist WHERE dataset_id = ?', array($dataset->id));
         });
+
+        });
+	}
+
+	public function updateTable($id){
+
+		$table_blacklist = $this->table_blacklist()->find($id); //table_blacklist::find($id);
+				$table_blacklist->blacklisted =true;
+				$table_blacklist->save();
 	}
 
 	public static function runQuery($dataset, $query){
@@ -95,7 +102,7 @@ class dataset extends Eloquent{
 			}
 			$dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		} catch(PDOException $e) {
-			$this->error( $e );
+			//forgive and forget $this->error( $e );
 		}
 
 		// add cache?

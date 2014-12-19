@@ -9,7 +9,14 @@
 	<h2>{{ $dataset['description'] }}</h2>
 	<hr>
 	<div class="jumbotron" style="text-align: left;">
-		<p>API endpoint: /api/v1/{{ $dataset['id'] }}/db={{ $dataset['dbname'] }}&table=datasets&format=json</p>	
+
+		<ul>
+		@foreach($tables as $id => $table)			
+			<li>API endpoints: <a href="/api/v1/{{ $dataset['id'] }}/db={{ $dataset['dbname'] }}&table={{ $table["value"] }}&format=json">
+			 /api/v1/{{ $dataset['id'] }}/db={{ $dataset['dbname'] }}&table={{ $table["value"] }}&format=json 
+			</a></li>
+		@endforeach	
+		<ul>
 	</div>
 </div>
 <p>
